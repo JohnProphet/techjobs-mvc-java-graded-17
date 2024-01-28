@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/">
+<html  lang="html" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="~{fragments :: head}">
 </head>
 <body>
@@ -11,28 +11,60 @@
   <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
   <!-- TODO #1 - Use a loop to display job results in a table. -->
+<!--  @param column - Job field that should be searched.-->
+<!--  @param value - Value of the field to search for.-->
+<!--  @return - List of all jobs matching the criteria.-->
 
-  <table>
+      <th:block th:each="job : ${jobs}">
+          <table class="job-listing">
+            <tr>
+              <td>ID</td>
+              <td th:text="${job.getId}"></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td th:text="${job.getName}"></td>
+            </tr>
+            <tr>
+                <td>Employer</td>
+                <td th:text="${job.getEmployer}">[need employer data]</td>
+            </tr>
+
+            <tr>
+                <td>Location</td>
+                <td th:text="${job.getLocation}">[need location data]</td>
+            </tr>
+            <tr>
+                <td>Position Type</td>
+                <td th:text="${job.getPositionType}">[need position data]</td>
+            </tr>
+            <tr>
+                <td>Skill</td>
+                <td th:text="${job.getCoreCompetency}">[need skills data]</td>
+            </tr>
+          </table>
+          <td></td>
+      </th:block>
+
+
+  <table class="centeredTable">
     <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Employer</th>
-      <th>Location</th>
-      <th>Position Type</th>
-      <th>Skill</th>
+      <th:block th:each="column : ${columnChoices}">
+        <th th:text = "${column.value}"></th>
+      </th:block>
     </tr>
-    <tr>
-      <td>Employer1</td>
-      <td>Name1</td>
-      <td>Location1</td>
-    </tr>
-    <tr>
-      <td>Employer2</td>
-      <td>Name2</td>
-      <td>Location2</td>
+    <td></td> <!-- Feel free to remove or modify this element if necessary. -->
+
+    <td th:each="category : ${tableChoices}">
+      <ul>
+
+        <li th:each="item : ${category.value}">
+          <a th:href="@{/list/jobs(column=${category.key},value=${item})}" th:text="${item}"></a>
+        </li>
+      </ul>
+    </td>
     </tr>
   </table>
 </div>
-
 </body>
 </html>
