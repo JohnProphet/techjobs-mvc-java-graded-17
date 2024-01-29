@@ -18,8 +18,8 @@
       <th:block th:each="job : ${jobs}">
           <table class="job-listing">
             <tr>
-              <td>ID</td>
-              <td th:text="${job.getId}"></td>
+                <td>ID</td>
+                <td th:text="${job.getId}"></td>
             </tr>
             <tr>
                 <td>Name</td>
@@ -29,7 +29,6 @@
                 <td>Employer</td>
                 <td th:text="${job.getEmployer}">[need employer data]</td>
             </tr>
-
             <tr>
                 <td>Location</td>
                 <td th:text="${job.getLocation}">[need location data]</td>
