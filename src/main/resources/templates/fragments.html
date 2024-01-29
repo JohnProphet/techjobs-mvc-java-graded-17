@@ -26,6 +26,37 @@
         </div>
     </div>
 </div>
+<div th:fragment="display-jobs">
+<th:block th:each="job : ${jobs}">
 
+    <table class="job-listing">
+        <tr>
+            <td>ID</td>
+            <td th:text="${job.getId}"></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td th:text="${job.getName}"></td>
+        </tr>
+        <tr>
+            <td>Employer</td>
+            <td th:text="${job.getEmployer}">[need employer data]</td>
+        </tr>
+        <tr>
+            <td>Location</td>
+            <td th:text="${job.getLocation}">[need location data]</td>
+        </tr>
+        <tr>
+            <td>Position Type</td>
+            <td th:text="${job.getPositionType}">[need position data]</td>
+        </tr>
+        <tr>
+            <td>Skill</td>
+            <td th:text="${job.getCoreCompetency}">[need skills data]</td>
+        </tr>
+    </table>
+    </div>
+    <!--          <td></td>-->
+</th:block>
 </body>
 </html>
